@@ -6,7 +6,11 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Placeholder(
-      child: Text("hi"),
+      child: Text("hi",style: TextStyle(color: ColorSwatch(primary, _swatch)),),
+    
+      
+      
+    //  
     );
   }
 }
