@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:genny_app/view/Home_Screen.dart';
 import 'package:genny_app/view/Login_Screen.dart';
-import 'package:genny_app/view/Splash_Screen.dart';
-import 'package:get/get_navigation/src/root/get_material_app.dart';
 
 void main() {
   runApp(const MyApp());
@@ -10,17 +9,14 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(
+    return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-
         primarySwatch: Colors.blue,
       ),
-      home:Splash(),
+      home: Home(),
     );
   }
 }
-
