@@ -40,7 +40,7 @@ class all_Transactions extends StatelessWidget {
                           )),
                       ///////////////////////////////////////////////////////////
                       Text(
-                        'All Leggers',
+                        'Legger',
                         style: TextStyle(
                             color: Colors.blue.shade900,
                             fontWeight: FontWeight.bold,
@@ -157,9 +157,16 @@ class all_Transactions extends StatelessWidget {
                 ),
                 */
                 //////////////////////////////////////////////
-                transaction_container(),
-                transaction_container(),
-                transaction_container(),
+                Expanded(
+                  flex: 3,
+                  child: ListView.builder(
+                    itemCount: 8,
+                    shrinkWrap: true,
+                    itemBuilder: (BuildContext context, int index) {
+                      return transaction_container();
+                    },
+                  ),
+                ),
               ],
             ),
           ),
