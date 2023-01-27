@@ -3,6 +3,8 @@ import 'package:genny_app/view/Home_Screen.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 
+import 'bottom_nav_gation_bar.dart';
+
 class Login extends StatelessWidget {
   const Login({Key? key}) : super(key: key);
 
@@ -21,7 +23,7 @@ class Login extends StatelessWidget {
 
               TextFormField(decoration: InputDecoration(label: Text("Username"))),
               TextFormField(decoration: InputDecoration(label: Text("Password"))),
-              ElevatedButton(onPressed: () { Get.to(Home());
+              ElevatedButton(onPressed: () { Get.to(bottom_Nav());
 
               }, child: Text("Sign in")),
               Row(
