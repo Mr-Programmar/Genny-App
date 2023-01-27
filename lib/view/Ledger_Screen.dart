@@ -1,0 +1,143 @@
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+
+import '../CUSTOM_WIDGETS/transaction_container.dart';
+
+class All_Ledgers extends StatelessWidget {
+  const All_Ledgers({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return SafeArea(
+      child: Scaffold(
+
+        backgroundColor: Colors.white,
+        body: Container(
+          height: double.infinity,
+          width: double.infinity,
+          child: Padding(
+            padding:
+                const EdgeInsets.only(top: 5, bottom: 10, left: 10, right: 10),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                ////////////////////////////////////////////////////////////////
+
+                Padding(
+                  padding: const EdgeInsets.only(
+                      top: 5, bottom: 8, left: 8, right: 8),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      ////////////////////////// Day Report ////////////////////////////////////
+                      CircleAvatar(
+                          backgroundColor: Colors.red,
+                          child: TextButton(
+                              onPressed: () {},
+                              child: Text(
+                                'D',
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: Get.height * .03),
+                              ))),
+                      ///////////////////// Weak Report ////////////////////////
+
+                      CircleAvatar(
+                          backgroundColor: Colors.blue,
+                          child: TextButton(
+                              onPressed: () {},
+                              child: Text(
+                                'W',
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: Get.height * .03),
+                              ))),
+
+                      // /////////////////////////////////////////////////////////
+
+                      ////////////////////////// Day Report ////////////////////////////////////
+                      CircleAvatar(
+                          backgroundColor: Colors.red,
+                          child: TextButton(
+                              onPressed: () {},
+                              child: Text(
+                                'M',
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: Get.height * .03),
+                              ))),
+                      ///////////////////// Weak Report ////////////////////////
+
+                      CircleAvatar(
+                          backgroundColor: Colors.blue,
+                          child: TextButton(
+                              onPressed: () {},
+                              child: Text(
+                                'Y',
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: Get.height * .03),
+                              ))),
+
+                      // /////////////////////////////////////////////////////////
+                    ],
+                  ),
+                ),
+                //////////////////////////////////////////////////////////////////////////////////
+                Padding(
+                  padding: const EdgeInsets.only(top: 15, bottom: 15),
+                  child: Container(
+                    height: MediaQuery.of(context).size.height * .05,
+                    width: double.infinity,
+                    decoration: BoxDecoration(
+                        color: Colors.white.withOpacity(.5),
+                        boxShadow: [
+                          BoxShadow(
+                            offset: Offset(20, -1),
+                            blurRadius: 20,
+                            color: Colors.blue,
+                          )
+                        ]),
+                    child: Center(
+                        child: Text(
+                      'Ledger ',
+                      style: TextStyle(
+                          fontSize: MediaQuery.of(context).size.height * .04),
+                    )),
+                  ),
+                ),
+                //////////////////////////////////////////////////////////////////////////////////
+                /*
+                ListView.builder(
+                  itemCount: 3,
+                  itemBuilder: (BuildContext context, int index) {
+                    return transaction_container();
+                  },
+                ),
+                */
+                //////////////////////////////////////////////
+                Expanded(
+                  flex: 3,
+                  child: ListView.builder(
+                    itemCount: 8,
+                    shrinkWrap: true,
+                    itemBuilder: (BuildContext context, int index) {
+                      return transaction_container();
+                    },
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}

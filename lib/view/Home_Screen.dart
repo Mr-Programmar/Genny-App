@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:genny_app/view/user_profile.dart';
+import 'package:genny_app/view/profile_screen.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 
@@ -33,33 +33,7 @@ class Home extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Container(
-                  width: double.infinity,
-                  height: MediaQuery.of(context).size.height * .1,
-                  color: Colors.transparent.withOpacity(0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      CircleAvatar(
-                          backgroundColor: Colors.amber,
-                          child: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Image(
-                                image: const AssetImage(
-                                    'assets/icons/BhaiNabeel.jpg')),
-                          )),
-                      ///////////////////////////////////////////////////////
-                      CircleAvatar(
-                        backgroundColor: Color.fromARGB(60, 79, 64, 64),
-                        child: IconButton(
-                            onPressed: () {},
-                            icon:
-                                Icon(Icons.notifications, color: Colors.black)),
-                      ),
-                    ],
-                  ),
-                  //////////////////////////////////////////////////////////
-                ),
+
                 //////////////////////////////////////////////////////////////////////////
                 ///////////////////////////////////////////////////////////////////////
                 Text(

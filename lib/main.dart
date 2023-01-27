@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:genny_app/view/Home_Screen.dart';
 import 'package:genny_app/view/Login_Screen.dart';
 import 'package:genny_app/view/Splash_Screen.dart';
-import 'package:genny_app/view/user_profile.dart';
+import 'package:genny_app/view/profile_screen.dart';
 import 'package:get/get.dart';
 
 void main() {

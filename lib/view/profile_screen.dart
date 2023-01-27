@@ -1,5 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+
+import '../Custom_Widgets/user_account_container.dart';
 
 class UserProfile extends StatefulWidget {
   const UserProfile({Key? key}) : super(key: key);
@@ -13,24 +17,16 @@ class _UserProfileState extends State<UserProfile> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        body: Padding(padding: EdgeInsets.symmetric(vertical: 10,horizontal: 10),
+
+        body: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 10),
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            //    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-
-
-              Container(
-                child: Column(children: [
-                  CircleAvatar(),
-                  Text("ASAD"),
-                  Text("asads8864@gmail.com"),
-                ],),
-              ),
-
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+              User_Account_Container(),
 
 //--------------------------------------------------------------------------------------Detais container-----------------------------------
-
-
 
               Container(
                 child: Column(
@@ -39,7 +35,8 @@ class _UserProfileState extends State<UserProfile> {
                     TextFormField(
                       enabled: false,
                       decoration: InputDecoration(
-                          label: Text("Email"), hintText: "asads8864@gmail.com"),
+                          label: Text("Email"),
+                          hintText: "asads8864@gmail.com"),
                     ),
                     TextFormField(
                       decoration: InputDecoration(
@@ -56,8 +53,6 @@ class _UserProfileState extends State<UserProfile> {
                         label: Text("Adress"),
                       ),
                     ),
-
-
                   ],
                 ),
               ),
