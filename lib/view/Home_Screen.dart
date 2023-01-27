@@ -8,47 +8,15 @@ import '../CUSTOM_WIDGETS/transaction_container.dart';
 import '../controller/controller_home.dart';
 
 class Home extends StatelessWidget {
-  Home({Key? key}) : super(key: key);
-  Controller_Home hmctr = Get.put(Controller_Home());
-  List <Widget>body=[
-    
-  ];
+  const Home({Key? key}) : super(key: key);
+
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        bottomNavigationBar: Obx(() => BottomNavigationBar(
-            onTap: (index) {
-              hmctr.default_nav_index.value = index;
-            },
-            currentIndex: hmctr.default_nav_index.value,
-            selectedItemColor: Colors.red,
-            unselectedItemColor: Colors.cyan,
-            items: [
-              BottomNavigationBarItem(
-                icon: Icon(Icons.home),
-                label: "home",
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.local_offer),
-                label: "offers",
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.production_quantity_limits),
-                label: "items",
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.message),
-                label: "message",
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.person),
-                label: "profile",
-              )
-            ])),
 
-        //----------------------------------------------------------------------------------------------------------------------------
+
 
 
 
