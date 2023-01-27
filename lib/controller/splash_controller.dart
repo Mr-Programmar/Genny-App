@@ -6,7 +6,7 @@ class Splash_Controller extends GetxController{
 
   splash_navigate() {
     Future.delayed(Duration(seconds: 5), (){
-      Get.to((Login()));
+      Get.to((const Login()));
     });
 
   }

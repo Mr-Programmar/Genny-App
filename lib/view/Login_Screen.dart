@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:genny_app/view/Home_Screen.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 
 class Login extends StatelessWidget {
   const Login({Key? key}) : super(key: key);
@@ -18,13 +21,19 @@ class Login extends StatelessWidget {
 
               TextFormField(decoration: InputDecoration(label: Text("Username"))),
               TextFormField(decoration: InputDecoration(label: Text("Password"))),
-              ElevatedButton(onPressed: () {}, child: Text("Sign")),
+              ElevatedButton(onPressed: () { Get.to(Home());
+
+              }, child: Text("Sign in")),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
 
                 children: [Text("Don't have an account?"),
 
-                TextButton(onPressed: (){}, child: Text("Sign up")),
+                TextButton(onPressed: (){
+
+
+
+                }, child: Text("Sign up")),
 
                 ],
               )
