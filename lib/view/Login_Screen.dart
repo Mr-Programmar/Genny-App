@@ -29,7 +29,11 @@ class Login extends StatelessWidget {
 
                 children: [Text("Don't have an account?"),
 
-                TextButton(onPressed: (){}, child: Text("Sign up")),
+                TextButton(onPressed: (){
+
+
+
+                }, child: Text("Sign up")),
 
                 ],
               )
