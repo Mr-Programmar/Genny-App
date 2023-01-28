@@ -2,8 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 
+import '../Model/model_login.dart';
+
 class User_Account_Container extends StatelessWidget {
-  const User_Account_Container({super.key});
+   User_Account_Container({super.key});
+
 
   @override
   Widget build(BuildContext context) {
@@ -14,9 +17,9 @@ class User_Account_Container extends StatelessWidget {
         child: UserAccountsDrawerHeader(
           //   margin: EdgeInsets.only(bottom: 680),
           currentAccountPicture:
-              Image(image: AssetImage('assets/icons/BhaiNabeel-modified.png')),
+              Image(image: NetworkImage("https://safwat.eavenir.com/Images/mr_black_1674896237.jpg")),
           accountName: Text(
-            'Ch Nabeel Ahmad',
+            "hi",
             style: TextStyle(
               color: Colors.white,
               fontWeight: FontWeight.bold,

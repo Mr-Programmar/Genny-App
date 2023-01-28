@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 
+import '../Model/model_login.dart';
 import '../controller/controller_home.dart';
 import '../controller/controller_navigation.dart';
 import 'Home_Screen.dart';
@@ -14,6 +15,7 @@ import 'offers_Screen.dart';
 class bottom_Nav extends StatelessWidget {
   bottom_Nav({Key? key}) : super(key: key);
   NavController navigation_instance = Get.put(NavController());
+
 
 
 
@@ -83,7 +85,7 @@ class bottom_Nav extends StatelessWidget {
                     image:
                     AssetImage('assets/icons/BhaiNabeel-modified.png')),
                 accountName: Text(
-                  'Ch Nabeel Ahmad',
+                  "hiiiiii",
                   style: TextStyle(
                     color: Colors.white,
                     fontWeight: FontWeight.bold,

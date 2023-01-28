@@ -35,7 +35,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   lottie: ^2.2.0
   get: ^4.6.5
-  circular_bottom_navigation: ^2.3.0
+  http: ^0.13.5
 
 dev_dependencies:
   flutter_test:

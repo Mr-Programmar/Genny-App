@@ -29,13 +29,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.2.1"
-  circular_bottom_navigation:
-    dependency: "direct main"
-    description:
-      name: circular_bottom_navigation
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "2.3.0"
   clock:
     dependency: transitive
     description:
@@ -102,6 +95,20 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "4.6.5"
+  http:
+    dependency: "direct main"
+    description:
+      name: http
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.13.5"
+  http_parser:
+    dependency: transitive
+    description:
+      name: http_parser
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "4.0.2"
   js:
     dependency: transitive
     description:

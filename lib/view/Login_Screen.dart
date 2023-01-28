@@ -1,12 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:genny_app/view/Home_Screen.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 
-import 'main_View.dart';
+import '../controller/controller_login.dart';
 
-class Login extends StatelessWidget {
+
+
+class Login extends StatefulWidget {
   const Login({Key? key}) : super(key: key);
+
+  @override
+  State<Login> createState() => _LoginState();
+}
+
+class _LoginState extends State<Login> {
+  TextEditingController emailcontroller = TextEditingController();
+  TextEditingController passwordcontroller = TextEditingController();
+  loginController _controller= Get.put(loginController());
 
   @override
   Widget build(BuildContext context) {
@@ -14,31 +24,29 @@ class Login extends StatelessWidget {
       child: Scaffold(
         body: Container(
           margin: EdgeInsets.only(top: 200),
-          padding: EdgeInsets.symmetric(horizontal: 10,vertical: 10),
-
+          padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
           child: Column(
             children: [
-
               Image(image: AssetImage("assets/icons/Genny_icon_transpart.png")),
+              TextFormField(
+                  controller: emailcontroller,
+                  decoration: InputDecoration(label: Text("Email or phone"))),
+              TextFormField(
+                  controller: passwordcontroller,
+                  decoration: InputDecoration(label: Text("Password"))),
+              ElevatedButton(onPressed: () {
 
-              TextFormField(decoration: InputDecoration(label: Text("Username"))),
-              TextFormField(decoration: InputDecoration(label: Text("Password"))),
-              ElevatedButton(onPressed: () { Get.to(bottom_Nav());
+                _controller.login(emailcontroller.text, passwordcontroller.text);
 
               }, child: Text("Sign in")),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
-
-                children: [Text("Don't have an account?"),
-
-                TextButton(onPressed: (){
-
-
-
-                }, child: Text("Sign up")),
-
+                children: [
+                  Text("Don't have an account?"),
+                  TextButton(onPressed: () {}, child: Text("Sign up")),
                 ],
               )
+
             ],
           ),
         ),
