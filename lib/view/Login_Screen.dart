@@ -14,29 +14,24 @@ class Login extends StatelessWidget {
       child: Scaffold(
         body: Container(
           margin: EdgeInsets.only(top: 200),
-          padding: EdgeInsets.symmetric(horizontal: 10,vertical: 10),
-
+          padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
           child: Column(
             children: [
-
               Image(image: AssetImage("assets/icons/Genny_icon_transpart.png")),
-
-              TextFormField(decoration: InputDecoration(label: Text("Username"))),
-              TextFormField(decoration: InputDecoration(label: Text("Password"))),
-              ElevatedButton(onPressed: () { Get.to(bottom_Nav());
-
-              }, child: Text("Sign in")),
+              TextFormField(
+                  decoration: InputDecoration(label: Text("Username"))),
+              TextFormField(
+                  decoration: InputDecoration(label: Text("Password"))),
+              ElevatedButton(
+                  onPressed: () {
+                    Get.to(Bottom_Nav());
+                  },
+                  child: Text("Sign in")),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
-
-                children: [Text("Don't have an account?"),
-
-                TextButton(onPressed: (){
-
-
-
-                }, child: Text("Sign up")),
-
+                children: [
+                  Text("Don't have an account?"),
+                  TextButton(onPressed: () {}, child: Text("Sign up")),
                 ],
               )
             ],

@@ -5,13 +5,45 @@ import 'package:get/get_core/src/get_main.dart';
 
 import '../CUSTOM_WIDGETS/transaction_container.dart';
 
-class all_Transactions extends StatelessWidget {
-  const all_Transactions({Key? key}) : super(key: key);
+class All_Ledgers extends StatelessWidget {
+  const All_Ledgers({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        drawer: Drawer(),
+        appBar: AppBar(
+          iconTheme: IconThemeData(
+              color: Colors.blue.shade900, size: Get.height * .04),
+          backgroundColor: Colors.transparent.withOpacity(0),
+          elevation: 0,
+          actions: [
+            Padding(
+              padding: const EdgeInsets.only(top: 8, bottom: 8, left: 8),
+              child: CircleAvatar(
+                  backgroundColor: Color.fromARGB(255, 237, 235, 230),
+                  child: IconButton(
+                      onPressed: () {},
+                      icon: Icon(
+                        Icons.notifications,
+                        color: Colors.black,
+                      ))),
+            ),
+            ///////////////////////////////////////////////////////
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: CircleAvatar(
+                  backgroundColor: Colors.amber,
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Image(
+                        image: const AssetImage('assets/icons/BhaiNabeel.jpg')),
+                  )),
+            ),
+            ////////////////////////////////////////////////////////
+          ],
+        ),
         backgroundColor: Colors.white,
         body: Container(
           height: double.infinity,
@@ -23,42 +55,7 @@ class all_Transactions extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Container(
-                  width: double.infinity,
-                  height: MediaQuery.of(context).size.height * .1,
-                  color: Colors.transparent.withOpacity(0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      CircleAvatar(
-                          backgroundColor: Colors.amber,
-                          child: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Image(
-                                image: const AssetImage(
-                                    'assets/icons/BhaiNabeel.jpg')),
-                          )),
-                      ///////////////////////////////////////////////////////////
-                      Text(
-                        'Legger',
-                        style: TextStyle(
-                            color: Colors.blue.shade900,
-                            fontWeight: FontWeight.bold,
-                            fontSize: Get.height * .05),
-                      ),
-                      ///////////////////////////////////////////////////////
-                      CircleAvatar(
-                        backgroundColor: Color.fromARGB(60, 79, 64, 64),
-                        child: IconButton(
-                            onPressed: () {},
-                            icon:
-                                Icon(Icons.notifications, color: Colors.black)),
-                      ),
-                    ],
-                  ),
-                  //////////////////////////////////////////////////////////
-                ),
-                //////////////////////////////////////////////////////////////////////////
+                ////////////////////////////////////////////////////////////////
 
                 Padding(
                   padding: const EdgeInsets.only(
@@ -141,7 +138,7 @@ class all_Transactions extends StatelessWidget {
                         ]),
                     child: Center(
                         child: Text(
-                      'New Offers : ',
+                      'Ledger ',
                       style: TextStyle(
                           fontSize: MediaQuery.of(context).size.height * .04),
                     )),
