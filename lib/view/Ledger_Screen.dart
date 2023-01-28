@@ -12,38 +12,7 @@ class All_Ledgers extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        drawer: Drawer(),
-        appBar: AppBar(
-          iconTheme: IconThemeData(
-              color: Colors.blue.shade900, size: Get.height * .04),
-          backgroundColor: Colors.transparent.withOpacity(0),
-          elevation: 0,
-          actions: [
-            Padding(
-              padding: const EdgeInsets.only(top: 8, bottom: 8, left: 8),
-              child: CircleAvatar(
-                  backgroundColor: Color.fromARGB(255, 237, 235, 230),
-                  child: IconButton(
-                      onPressed: () {},
-                      icon: Icon(
-                        Icons.notifications,
-                        color: Colors.black,
-                      ))),
-            ),
-            ///////////////////////////////////////////////////////
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: CircleAvatar(
-                  backgroundColor: Colors.amber,
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Image(
-                        image: const AssetImage('assets/icons/BhaiNabeel.jpg')),
-                  )),
-            ),
-            ////////////////////////////////////////////////////////
-          ],
-        ),
+
         backgroundColor: Colors.white,
         body: Container(
           height: double.infinity,
