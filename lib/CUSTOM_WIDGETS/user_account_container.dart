@@ -4,62 +4,76 @@ import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 
 class User_Account_Container extends StatelessWidget {
-  const User_Account_Container({super.key});
+  final double container_height;
+  final double container_width;
+  final double top_left_corner_radius;
+  final double top_right_corner_radius;
+  final double bottom_left_corner_radius;
+  final double bottom_right_corner_radius;
+  final double border_width;
+  final Color border_color;
+
+  User_Account_Container({
+    required this.container_height,
+    required this.container_width,
+    required this.top_left_corner_radius,
+    required this.top_right_corner_radius,
+    required this.bottom_left_corner_radius,
+    required this.bottom_right_corner_radius,
+    required this.border_width,
+    required this.border_color,
+    //super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: Get.height * .2,
-      width: double.infinity,
+      height: container_height,
+      width: container_width,
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(30),
-        boxShadow: [
-          BoxShadow(
-            offset: Offset(0, -2),
-            blurRadius: 10,
-            color: Custom_Colors.icon_button_Color.withOpacity(.2),
-            //color: Custom_Colors.icon_button_Color..withOpacity(.6),
-          )
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(top_left_corner_radius),
+            topRight: Radius.circular(top_right_corner_radius),
+            bottomLeft: Radius.circular(bottom_left_corner_radius),
+            bottomRight: Radius.circular(bottom_right_corner_radius),
+          ),
+          border: Border.all(width: border_width, color: border_color),
+          color: Custom_Colors.app_Background_Color),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Image(
+                height: Get.height * .09,
+                image: AssetImage(
+                  'assets/icons/BhaiNabeel-modified.png',
+                )),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text(
+              'Ch Nabeel Ahmad',
+              style: TextStyle(
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+                fontSize: Get.height * .02,
+              ),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text(
+              'schohan123456@gmail.com',
+              style: TextStyle(
+                //  color: Custom_Colors.icon_button_Color,
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+                fontSize: Get.height * .02,
+              ),
+            ),
+          ),
         ],
-        color: Custom_Colors.icon_button_Color.withOpacity(.20),
-      ),
-      child: Padding(
-        padding: const EdgeInsets.all(3.0),
-        child: UserAccountsDrawerHeader(
-          decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(30),
-              boxShadow: [
-                BoxShadow(
-                    offset: Offset(0, -2),
-                    blurRadius: 20,
-                    //  color: Colors.blue,
-                    color: Custom_Colors.icon_button_Color.withOpacity(.5))
-              ],
-              //  color: Custom_Colors.icon_button_Color.withOpacity(.43),
-              color: Custom_Colors.app_Background_Color),
-          //   margin: EdgeInsets.only(bottom: 680),
-          currentAccountPicture: Image(
-              image: AssetImage(
-            'assets/icons/BhaiNabeel-modified.png',
-          )),
-          accountName: Text(
-            'Ch Nabeel Ahmad',
-            style: TextStyle(
-              color: Colors.white,
-              fontWeight: FontWeight.bold,
-              fontSize: Get.height * .02,
-            ),
-          ),
-          accountEmail: Text(
-            'schohan123456@gmail.com',
-            style: TextStyle(
-              //  color: Custom_Colors.icon_button_Color,
-              color: Colors.white,
-              fontWeight: FontWeight.bold,
-              fontSize: Get.height * .02,
-            ),
-          ),
-        ),
       ),
     ); //// );
   }

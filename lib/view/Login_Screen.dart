@@ -19,7 +19,7 @@ class Login extends StatelessWidget {
           width: double.infinity,
           child: Padding(
             padding:
-                const EdgeInsets.only(top: 10, bottom: 10, left: 40, right: 40),
+                const EdgeInsets.only(top: 10, bottom: 10, left: 50, right: 50),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
@@ -29,117 +29,117 @@ class Login extends StatelessWidget {
                 //////////////////////////////////////////////////////////////////////////////////////////
                 ///////////////////     Username            ////////////////////////////////////////////////////////////////
                 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                TextFormField(
-                    style: TextStyle(
-                        color: Colors.white, fontSize: Get.height * .02),
-                    cursorHeight: Get.height * .02,
-                    decoration: InputDecoration(
-                        // focusedBorder: UnderlineInputBorder(
-                        //   borderSide: BorderSide(
-                        //       color: Custom_Colors.icon_button_Color),
-                        //   borderRadius: BorderRadius.circular(30),
-                        // ),
-
-                        enabled: true,
-                        enabledBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(
-                              color: Custom_Colors.icon_button_Color),
-                          //  borderRadius: BorderRadius.circular(30),
-                        ),
-                        hintText: 'Enter eMail or Phone Number',
-                        hintStyle: TextStyle(
-                            color: Colors.white38, fontSize: Get.height * .02),
-                        label: Text(
-                          "Username",
+                Container(
+                  height: Get.height * .32,
+                  // color: Colors.white,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      TextFormField(
                           style: TextStyle(
-                              fontStyle: FontStyle.italic,
-                              fontSize: Get.height * .02,
-                              color: Custom_Colors.icon_button_Color),
-                        ))),
+                              color: Colors.white, fontSize: Get.height * .02),
+                          cursorHeight: Get.height * .02,
+                          decoration: InputDecoration(
+                              // focusedBorder: UnderlineInputBorder(
+                              //   borderSide: BorderSide(
+                              //       color: Custom_Colors.icon_button_Color),
+                              //   borderRadius: BorderRadius.circular(30),
+                              // ),
 
-                //////////////////////////////////////////////////////////////////////////////////////////
-                ///////////////////////////   Password      /////////////////////////////////////////////////////
-                ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                TextFormField(
-                    style: TextStyle(
-                        color: Colors.white, fontSize: Get.height * .02),
-                    cursorHeight: Get.height * .02,
-                    decoration: InputDecoration(
-                        suffixIcon: IconButton(
-                            onPressed: () {},
-                            icon: Icon(
-                              Icons.visibility_off,
+                              enabled: true,
+                              enabledBorder: UnderlineInputBorder(
+                                borderSide: BorderSide(
+                                    color: Custom_Colors.icon_button_Color),
+                                //  borderRadius: BorderRadius.circular(30),
+                              ),
+                              hintText: 'Enter Email or Phone Number',
+                              hintStyle: TextStyle(
+                                  color: Colors.white38,
+                                  fontSize: Get.height * .02),
+                              label: Text(
+                                "Username",
+                                style: TextStyle(
+                                    fontStyle: FontStyle.italic,
+                                    fontSize: Get.height * .02,
+                                    color: Custom_Colors.icon_button_Color),
+                              ))),
+                      ///////////////////////////   Password      /////////////////////////////////////////////////////
+                      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                      TextFormField(
+                          style: TextStyle(
+                              color: Colors.white, fontSize: Get.height * .02),
+                          cursorHeight: Get.height * .02,
+                          decoration: InputDecoration(
+                              suffixIcon: IconButton(
+                                  onPressed: () {},
+                                  icon: Icon(
+                                    Icons.visibility_off,
+                                    color: Custom_Colors.icon_button_Color,
+                                    size: Get.height * .035,
+                                  )),
+                              // focusedBorder: OutlineInputBorder(
+                              //   borderSide: BorderSide(
+                              //       color: Custom_Colors.icon_button_Color),
+                              //   borderRadius: BorderRadius.circular(30),
+                              // ),
+
+                              enabled: true,
+                              enabledBorder: UnderlineInputBorder(
+                                borderSide: BorderSide(
+                                    color: Custom_Colors.icon_button_Color),
+                                //  borderRadius: BorderRadius.circular(30),
+                              ),
+                              hintText: 'Enter Password',
+                              hintStyle: TextStyle(
+                                  color: Colors.white38,
+                                  fontSize: Get.height * .02),
+                              label: Text(
+                                "Password",
+                                style: TextStyle(
+                                    fontStyle: FontStyle.italic,
+                                    fontSize: Get.height * .02,
+                                    color: Custom_Colors.icon_button_Color),
+                              ))),
+                      //////////////////////////////////////////////////////////////////////////////////////////
+                      //////////////////////////  Update Button //////////////////////////////////////////////////////////////////////
+                      GestureDetector(
+                        onTap: () {
+                          Get.to(bottom_Nav());
+                        },
+                        child: Container(
+                          height: Get.height * .05,
+                          width: Get.width * .6,
+                          decoration: BoxDecoration(
+                            border: Border.all(
+                              width: 2,
                               color: Custom_Colors.icon_button_Color,
-                              size: Get.height * .035,
-                            )),
-                        // focusedBorder: OutlineInputBorder(
-                        //   borderSide: BorderSide(
-                        //       color: Custom_Colors.icon_button_Color),
-                        //   borderRadius: BorderRadius.circular(30),
-                        // ),
+                            ),
+                            borderRadius: BorderRadius.circular(30),
+                            //color: Custom_Colors.app_Background_Color,
+                            color: Custom_Colors.icon_button_Color,
+                          ),
+                          child: Center(
+                            child: Text(
+                              'Login',
+                              style: TextStyle(
+                                fontStyle: FontStyle.italic,
+                                fontSize: Get.height * .03,
+                                fontWeight: FontWeight.normal,
+                                // color: Custom_Colors.icon_button_Color,
+                                color: Colors.white,
+                              ),
+                            ),
+                          ),
+                        ),
+                      )
 
-                        enabled: true,
-                        enabledBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(
-                              color: Custom_Colors.icon_button_Color),
-                          //  borderRadius: BorderRadius.circular(30),
-                        ),
-                        hintText: 'Enter Password',
-                        hintStyle: TextStyle(
-                            color: Colors.white38, fontSize: Get.height * .02),
-                        label: Text(
-                          "Password",
-                          style: TextStyle(
-                              fontStyle: FontStyle.italic,
-                              fontSize: Get.height * .02,
-                              color: Custom_Colors.icon_button_Color),
-                        ))),
-                //////////////////////////////////////////////////////////////////////////////////////////
-                ///////////////////////////////////////////////////////////////////////////////////////////////////////
-                ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                GestureDetector(
-                  onTap: () {
-                    Get.to(bottom_Nav());
-                  },
-                  child: Container(
-                    height: Get.height * .05,
-                    width: Get.width * .8,
-                    decoration: BoxDecoration(
-                      border: Border.all(
-                        width: 2,
-                        color: Custom_Colors.icon_button_Color,
-                      ),
-                      borderRadius: BorderRadius.circular(30),
-                      color: Custom_Colors.app_Background_Color,
-                    ),
-                    child: Center(
-                      child: Text(
-                        'Login',
-                        style: TextStyle(
-                          fontStyle: FontStyle.italic,
-                          fontSize: Get.height * .03,
-                          fontWeight: FontWeight.bold,
-                          color: Custom_Colors.icon_button_Color,
-                        ),
-                      ),
-                    ),
+                      //////////////////////////////////////////////////////
+                    ],
                   ),
-                )
-
-                /*
-                SizedBox(
-                  height: Get.height * .07,
-                  width: Get.width * .4,
-                  child: ElevatedButton(
-                      onPressed: () {
-                        Get.to(bottom_Nav());
-                      },
-                      child: Text("Sign in")),
                 ),
-*/
+
                 //////////////////////////////////////////////////////////////////////////////////////////
                 ///////////////////////////////////////////////////////////////////////////////////////////////////////
-                ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
               ],
             ),
           ),
