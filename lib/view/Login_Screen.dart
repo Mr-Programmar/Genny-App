@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 
+import '../Model/model_login.dart';
 import '../controller/controller_login.dart';
 
 
@@ -17,6 +18,9 @@ class _LoginState extends State<Login> {
   TextEditingController emailcontroller = TextEditingController();
   TextEditingController passwordcontroller = TextEditingController();
   loginController _controller= Get.put(loginController());
+
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -34,9 +38,14 @@ class _LoginState extends State<Login> {
               TextFormField(
                   controller: passwordcontroller,
                   decoration: InputDecoration(label: Text("Password"))),
-              ElevatedButton(onPressed: () {
+              ElevatedButton(onPressed: () async{
 
-                _controller.login(emailcontroller.text, passwordcontroller.text);
+               await _controller.login(emailcontroller.text, passwordcontroller.text);
+
+
+
+
+
 
               }, child: Text("Sign in")),
               Row(
