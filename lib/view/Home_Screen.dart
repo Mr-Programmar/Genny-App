@@ -7,10 +7,18 @@ import 'package:get/get_core/src/get_main.dart';
 
 import '../CUSTOM_WIDGETS/Custom_Colors.dart';
 import '../CUSTOM_WIDGETS/transaction_container.dart';
+import '../Model/model_login.dart';
 import '../controller/controller_home.dart';
+import '../controller/controller_login.dart';
 
-class Home extends StatelessWidget {
+class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
+
+  @override
+  State<Home> createState() => _HomeState();
+}
+
+class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +47,7 @@ class Home extends StatelessWidget {
                 //////////////////////////////////////////////////////////////
                 ///////////////////////////////////////////////////////////////////////
                 Text(
-                  'Nabeel Ahmad',
+                  loginController.loginmodel_instance.name,
                   style: TextStyle(
                       color: Colors.white,
                       fontSize: MediaQuery.of(context).size.height * .04,

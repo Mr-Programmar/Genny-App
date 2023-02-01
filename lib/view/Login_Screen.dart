@@ -4,10 +4,20 @@ import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 
 import '../CUSTOM_WIDGETS/Custom_Colors.dart';
+import '../controller/controller_login.dart';
 import 'main_View.dart';
 
-class Login extends StatelessWidget {
+class Login extends StatefulWidget {
   const Login({Key? key}) : super(key: key);
+
+  @override
+  State<Login> createState() => _LoginState();
+}
+
+class _LoginState extends State<Login> {
+
+  TextEditingController _email=TextEditingController();
+  TextEditingController _pass=TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -36,6 +46,7 @@ class Login extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       TextFormField(
+                        controller: _email,
                           style: TextStyle(
                               color: Colors.white, fontSize: Get.height * .02),
                           cursorHeight: Get.height * .02,
@@ -66,6 +77,7 @@ class Login extends StatelessWidget {
                       ///////////////////////////   Password      /////////////////////////////////////////////////////
                       ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                       TextFormField(
+                          controller: _pass,
                           style: TextStyle(
                               color: Colors.white, fontSize: Get.height * .02),
                           cursorHeight: Get.height * .02,
@@ -104,7 +116,8 @@ class Login extends StatelessWidget {
                       //////////////////////////  Update Button //////////////////////////////////////////////////////////////////////
                       GestureDetector(
                         onTap: () {
-                          Get.to(bottom_Nav());
+                          loginController.login(_email.text, _pass.text);
+
                         },
                         child: Container(
                           height: Get.height * .05,

@@ -7,14 +7,16 @@ import '../view/main_View.dart';
 import 'package:http/http.dart' as http;
 
  class loginController extends GetxController {
-   late LoginModel loginmodel_instance;
 
 
 
+    static late LoginModel loginmodel_instance;
 
-    login(email, password) async {
+
+
+     static login(email, password) async {
     try {
-      var url = Uri.parse('https://safwat.eavenir.com/api/login');
+      var url = Uri.parse('https://newgenny.eavenir.com/api/login');
       final responce = await http.post(
         url,
         headers: {
@@ -31,7 +33,7 @@ import 'package:http/http.dart' as http;
       print(responce.statusCode);
        var alldata = jsonDecode(responce.body);
 
-       loginmodel_instance = LoginModel(name: alldata["User"]["name"],emailsave: alldata["User"]["email"], profile_image: alldata["User"]["ProfilePic"], token: alldata["sessionToken"] );
+        loginmodel_instance = LoginModel(name: alldata["User"]["name"],emailsave: alldata["User"]["email"], profile_image: alldata["User"]["image"], userid: alldata["User"]["id"] );
 
       if (alldata["status"] == "exist") {
 

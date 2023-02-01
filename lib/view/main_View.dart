@@ -92,7 +92,7 @@ class bottom_Nav extends StatelessWidget {
 
             ////////////////////////////////////////////////////////////////////////////////////
             Padding(
-              padding: const EdgeInsets.only(bottom: 0),
+              padding: const EdgeInsets.only(top: 10),
               child: Container(
                 decoration: BoxDecoration(
                     color: Custom_Colors.app_Background_Color,

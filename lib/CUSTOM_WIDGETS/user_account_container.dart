@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:genny_app/CUSTOM_WIDGETS/Custom_Colors.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
+import '../controller/controller_login.dart';
 
 class User_Account_Container extends StatelessWidget {
+
   final double container_height;
   final double container_width;
   final double top_left_corner_radius;
@@ -46,14 +48,14 @@ class User_Account_Container extends StatelessWidget {
             padding: const EdgeInsets.all(8.0),
             child: Image(
                 height: Get.height * .09,
-                image: AssetImage(
-                  'assets/icons/BhaiNabeel-modified.png',
+                image: NetworkImage(
+                    "https://newgenny.eavenir.com/${loginController.loginmodel_instance.profile_image}" ,
                 )),
           ),
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Text(
-              'Ch Nabeel Ahmad',
+              loginController.loginmodel_instance.name,
               style: TextStyle(
                 color: Colors.white,
                 fontWeight: FontWeight.bold,
@@ -62,9 +64,9 @@ class User_Account_Container extends StatelessWidget {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.only(left: 10),
             child: Text(
-              'schohan123456@gmail.com',
+              loginController.loginmodel_instance.emailsave,
               style: TextStyle(
                 //  color: Custom_Colors.icon_button_Color,
                 color: Colors.white,
