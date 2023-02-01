@@ -1,62 +1,147 @@
 import 'package:flutter/material.dart';
+import 'package:genny_app/view/Home_Screen.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 
-import '../Model/model_login.dart';
-import '../controller/controller_login.dart';
+import '../CUSTOM_WIDGETS/Custom_Colors.dart';
+import 'main_View.dart';
 
-
-
-class Login extends StatefulWidget {
+class Login extends StatelessWidget {
   const Login({Key? key}) : super(key: key);
-
-  @override
-  State<Login> createState() => _LoginState();
-}
-
-class _LoginState extends State<Login> {
-  TextEditingController emailcontroller = TextEditingController();
-  TextEditingController passwordcontroller = TextEditingController();
-  loginController _controller= Get.put(loginController());
-
-
-
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        backgroundColor: Colors.black,
         body: Container(
-          margin: EdgeInsets.only(top: 200),
-          padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-          child: Column(
-            children: [
-              Image(image: AssetImage("assets/icons/Genny_icon_transpart.png")),
-              TextFormField(
-                  controller: emailcontroller,
-                  decoration: InputDecoration(label: Text("Email or phone"))),
-              TextFormField(
-                  controller: passwordcontroller,
-                  decoration: InputDecoration(label: Text("Password"))),
-              ElevatedButton(onPressed: () async{
+          height: double.infinity,
+          width: double.infinity,
+          child: Padding(
+            padding:
+                const EdgeInsets.only(top: 10, bottom: 10, left: 50, right: 50),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: <Widget>[
+                Image(
+                    width: Get.width * .458,
+                    image: AssetImage("assets/icons/Genny_icon_transpart.png")),
+                //////////////////////////////////////////////////////////////////////////////////////////
+                ///////////////////     Username            ////////////////////////////////////////////////////////////////
+                ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                Container(
+                  height: Get.height * .32,
+                  // color: Colors.white,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      TextFormField(
+                          style: TextStyle(
+                              color: Colors.white, fontSize: Get.height * .02),
+                          cursorHeight: Get.height * .02,
+                          decoration: InputDecoration(
+                              // focusedBorder: UnderlineInputBorder(
+                              //   borderSide: BorderSide(
+                              //       color: Custom_Colors.icon_button_Color),
+                              //   borderRadius: BorderRadius.circular(30),
+                              // ),
 
-               await _controller.login(emailcontroller.text, passwordcontroller.text);
+                              enabled: true,
+                              enabledBorder: UnderlineInputBorder(
+                                borderSide: BorderSide(
+                                    color: Custom_Colors.icon_button_Color),
+                                //  borderRadius: BorderRadius.circular(30),
+                              ),
+                              hintText: 'Enter Email or Phone Number',
+                              hintStyle: TextStyle(
+                                  color: Colors.white38,
+                                  fontSize: Get.height * .02),
+                              label: Text(
+                                "Username",
+                                style: TextStyle(
+                                    fontStyle: FontStyle.italic,
+                                    fontSize: Get.height * .02,
+                                    color: Custom_Colors.icon_button_Color),
+                              ))),
+                      ///////////////////////////   Password      /////////////////////////////////////////////////////
+                      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                      TextFormField(
+                          style: TextStyle(
+                              color: Colors.white, fontSize: Get.height * .02),
+                          cursorHeight: Get.height * .02,
+                          decoration: InputDecoration(
+                              suffixIcon: IconButton(
+                                  onPressed: () {},
+                                  icon: Icon(
+                                    Icons.visibility_off,
+                                    color: Custom_Colors.icon_button_Color,
+                                    size: Get.height * .035,
+                                  )),
+                              // focusedBorder: OutlineInputBorder(
+                              //   borderSide: BorderSide(
+                              //       color: Custom_Colors.icon_button_Color),
+                              //   borderRadius: BorderRadius.circular(30),
+                              // ),
 
+                              enabled: true,
+                              enabledBorder: UnderlineInputBorder(
+                                borderSide: BorderSide(
+                                    color: Custom_Colors.icon_button_Color),
+                                //  borderRadius: BorderRadius.circular(30),
+                              ),
+                              hintText: 'Enter Password',
+                              hintStyle: TextStyle(
+                                  color: Colors.white38,
+                                  fontSize: Get.height * .02),
+                              label: Text(
+                                "Password",
+                                style: TextStyle(
+                                    fontStyle: FontStyle.italic,
+                                    fontSize: Get.height * .02,
+                                    color: Custom_Colors.icon_button_Color),
+                              ))),
+                      //////////////////////////////////////////////////////////////////////////////////////////
+                      //////////////////////////  Update Button //////////////////////////////////////////////////////////////////////
+                      GestureDetector(
+                        onTap: () {
+                          Get.to(bottom_Nav());
+                        },
+                        child: Container(
+                          height: Get.height * .05,
+                          width: Get.width * .6,
+                          decoration: BoxDecoration(
+                            border: Border.all(
+                              width: 2,
+                              color: Custom_Colors.icon_button_Color,
+                            ),
+                            borderRadius: BorderRadius.circular(30),
+                            //color: Custom_Colors.app_Background_Color,
+                            color: Custom_Colors.icon_button_Color,
+                          ),
+                          child: Center(
+                            child: Text(
+                              'Login',
+                              style: TextStyle(
+                                fontStyle: FontStyle.italic,
+                                fontSize: Get.height * .03,
+                                fontWeight: FontWeight.normal,
+                                // color: Custom_Colors.icon_button_Color,
+                                color: Colors.white,
+                              ),
+                            ),
+                          ),
+                        ),
+                      )
 
+                      //////////////////////////////////////////////////////
+                    ],
+                  ),
+                ),
 
-
-
-
-              }, child: Text("Sign in")),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text("Don't have an account?"),
-                  TextButton(onPressed: () {}, child: Text("Sign up")),
-                ],
-              )
-
-            ],
+                //////////////////////////////////////////////////////////////////////////////////////////
+                ///////////////////////////////////////////////////////////////////////////////////////////////////////
+              ],
+            ),
           ),
         ),
       ),

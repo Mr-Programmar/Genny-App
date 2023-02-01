@@ -1,29 +1,23 @@
+import 'package:responsive_builder/responsive_builder.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:genny_app/view/profile_screen.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 
+import '../CUSTOM_WIDGETS/Custom_Colors.dart';
 import '../CUSTOM_WIDGETS/transaction_container.dart';
 import '../controller/controller_home.dart';
 
 class Home extends StatelessWidget {
   const Home({Key? key}) : super(key: key);
 
-
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-
-
-
-
-
-
-
-
-        backgroundColor: Colors.white,
+        //  backgroundColor: Custom_Colors.app_Background_Color,
+        backgroundColor: Colors.black,
         body: Container(
           height: double.infinity,
           width: double.infinity,
@@ -33,13 +27,12 @@ class Home extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-
                 //////////////////////////////////////////////////////////////////////////
                 ///////////////////////////////////////////////////////////////////////
                 Text(
                   'Hello',
                   style: TextStyle(
-                      color: Color.fromARGB(255, 57, 52, 52),
+                      color: Colors.white60,
                       fontSize: MediaQuery.of(context).size.height * .02,
                       fontWeight: FontWeight.bold),
                 ),
@@ -48,131 +41,222 @@ class Home extends StatelessWidget {
                 Text(
                   'Nabeel Ahmad',
                   style: TextStyle(
-                      color: Colors.black,
+                      color: Colors.white,
                       fontSize: MediaQuery.of(context).size.height * .04,
                       fontWeight: FontWeight.bold),
                 ),
                 //////////////////////////////////////////////////////////////
+
+                SizedBox(
+                  height: 10,
+                ),
+
                 Container(
-                  margin: EdgeInsets.only(top: 25),
-                  height: MediaQuery.of(context).size.height * .3,
+                  margin: EdgeInsets.only(top: 10),
+                  height: MediaQuery.of(context).size.height * .28,
                   decoration: BoxDecoration(
-                      color: Colors.white,
-                      shape: BoxShape.circle,
-                      boxShadow: [
-                        BoxShadow(
-                            offset: Offset(10, 35),
-                            blurRadius: 200,
-                            color: Colors.blue)
-                      ]),
+                    border: Border.all(
+                        width: 2, color: Custom_Colors.icon_button_Color),
+                    color: Custom_Colors.app_Background_Color,
+                    shape: BoxShape.circle,
+                    //////////////////////
+                    // boxShadow: [
+                    //   BoxShadow(
+                    //       offset: Offset(1, 1),
+                    //       blurRadius: 100,
+                    //       color:
+                    //           Custom_Colors.icon_button_Color.withOpacity(.5))
+                    // ],
+                    // ////////////////////////////////
+                  ),
                   child: Center(
                     child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        Padding(
-                          padding: const EdgeInsets.only(
-                              top: 30, left: 5, right: 0, bottom: 15),
-                          child: Text(
-                            'Your Balance ...',
-                            style: TextStyle(
-                                color: Colors.black,
-                                fontSize:
-                                    MediaQuery.of(context).size.height * .02,
-                                fontWeight: FontWeight.normal),
-                          ),
+                        Text(
+                          'Balance',
+                          style: TextStyle(
+                              //  color: Custom_Colors.icon_button_Color,
+                              color: Colors.white60,
+                              fontSize:
+                                  MediaQuery.of(context).size.height * .03,
+                              fontWeight: FontWeight.bold),
+                        ),
+                        ///////////////////////////////////////////////////////////
+
+                        ResponsiveBuilder(
+                          builder: (BuildContext context,
+                              SizingInformation sizingInformation) {
+                            return Padding(
+                              padding:
+                                  const EdgeInsets.only(left: 10, right: 10),
+                              child: Text("Rs. 9",
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: sizingInformation
+                                              .localWidgetSize.width /
+                                          15)),
+                            );
+                          },
+                          /////////////////////////////////////////////////////////////////////////////////////
                         ),
                         //////////////////////////////////////////////////////////////
-                        Padding(
-                          padding: const EdgeInsets.only(
-                              top: 60, left: 5, right: 0, bottom: 20),
-                          child: Text(
-                            '987654321 pkr',
-                            style: TextStyle(
-                                color: Colors.black,
-                                fontSize:
-                                    MediaQuery.of(context).size.height * .03,
-                                fontWeight: FontWeight.normal),
-                          ),
-                        ),
                         //////////////////////////////////////////////////////////////
+                        // Text(
+                        //   'pkr only /-',
+                        //   style: TextStyle(
+                        //       color: Color.fromARGB(255, 117, 114, 114),
+                        //       fontSize:
+                        //           MediaQuery.of(context).size.height * .03,
+                        //       fontWeight: FontWeight.bold),
+                        // ),
+                        // //////////////////////////////////////////////////////////////////////////
                       ],
                     ),
                   ),
                 ),
                 ////////////////////////////////////////////////////////////////////////////
                 ////////////////////////////////////////////////////////////////
+
+                SizedBox(
+                  height: 10,
+                ),
+
                 Padding(
                   padding: const EdgeInsets.only(
-                      top: 20, bottom: 8, left: 8, right: 8),
+                      top: 10, bottom: 3, left: 8, right: 3),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      Column(
-                        children: [
-                          Text(
-                            'LAST DEBIT',
-                            style: TextStyle(
-                                color: Color.fromARGB(255, 96, 85, 85),
-                                fontSize:
-                                    MediaQuery.of(context).size.height * .015,
-                                fontWeight: FontWeight.bold),
+                      /////////////////////////////////////////////
+                      ///  Debit Container
+                      /////////////////////////////////////////////////////
+                      Container(
+                        height: Get.height * .09,
+                        width: Get.width * .45,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(25),
+                          border: Border.all(
+                              width: 2, color: Custom_Colors.icon_button_Color),
+                          color: Custom_Colors.app_Background_Color,
+                          // boxShadow: [
+                          //   BoxShadow(
+                          //     offset: Offset(1, 1),
+                          //     blurRadius: 20,
+                          //     color: Custom_Colors.icon_button_Color
+                          //         .withOpacity(.37),
+                          //   )
+                          // ],
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              Column(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    'DEBIT',
+                                    style: TextStyle(
+                                        color: Colors.white60,
+                                        fontSize:
+                                            MediaQuery.of(context).size.height *
+                                                .02,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                  //////////////////////////////////////////////////
+                                  Text(
+                                    'Rs. 987654321',
+                                    style: TextStyle(
+                                        color: Color.fromARGB(255, 0, 255, 17),
+                                        fontSize:
+                                            MediaQuery.of(context).size.height *
+                                                .02,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                  /////////////////////////////////////////
+                                ],
+                              ),
+                              /////////////////////////////////////////////
+                              Icon(
+                                size: Get.height * .04,
+                                Icons.arrow_circle_up,
+                                color: Color.fromARGB(255, 0, 255, 17),
+                              ),
+                            ],
                           ),
-                          //////////////////////////////////////////////////
-                          Text(
-                            'RS/- 987654321',
-                            style: TextStyle(
-                                color: Colors.black,
-                                fontSize:
-                                    MediaQuery.of(context).size.height * .02,
-                                fontWeight: FontWeight.bold),
-                          ),
-                          /////////////////////////////////////////
-                        ],
-                      ),
-                      CircleAvatar(
-                        backgroundColor: Colors.red,
-                        child: Icon(
-                          Icons.arrow_circle_up,
-                          color: Colors.white,
                         ),
                       ),
+
                       /////////////////////////////////////////////////////////
 
-                      Container(
-                        color: Colors.blue,
-                        height: MediaQuery.of(context).size.height * .04,
-                        width: 1,
-                      ),
                       /////////////////////////////////////////////
-                      ///
-                      CircleAvatar(
-                        backgroundColor: Colors.blue,
-                        child: Icon(
-                          Icons.arrow_circle_up,
-                          color: Colors.white,
+                      ///  Credit Container
+                      /////////////////////////////////////////////////////
+                      Container(
+                        height: Get.height * .09,
+                        width: Get.width * .45,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(25),
+                          border: Border.all(
+                              width: 2, color: Custom_Colors.icon_button_Color),
+                          color: Custom_Colors.app_Background_Color,
+                          // boxShadow: [
+                          //   BoxShadow(
+                          //     offset: Offset(1, 1),
+                          //     blurRadius: 20,
+                          //     color: Custom_Colors.icon_button_Color
+                          //         .withOpacity(.37),
+                          //   )
+                          // ],
                         ),
-                      ),
-                      ////////////////////////////////////////
-                      Column(
-                        children: [
-                          Text(
-                            'LAST CREDIT',
-                            style: TextStyle(
-                                color: Color.fromARGB(255, 96, 85, 85),
-                                fontSize:
-                                    MediaQuery.of(context).size.height * .015,
-                                fontWeight: FontWeight.bold),
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              Column(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    'CREDIT',
+                                    style: TextStyle(
+                                        color: Colors.white60,
+                                        fontSize:
+                                            MediaQuery.of(context).size.height *
+                                                .02,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                  //////////////////////////////////////////////////
+                                  Text(
+                                    'Rs. 55555555',
+                                    style: TextStyle(
+                                        color: Color.fromARGB(255, 255, 35, 35),
+                                        fontSize:
+                                            MediaQuery.of(context).size.height *
+                                                .02,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                  /////////////////////////////////////////
+                                ],
+                              ),
+                              /////////////////////////////////////////////
+                              Icon(
+                                size: Get.height * .04,
+                                Icons.arrow_circle_down,
+                                color: Color.fromARGB(255, 255, 35, 35),
+                              ),
+                            ],
                           ),
-                          //////////////////////////////////////////////////
-                          Text(
-                            'RS/- 123456789',
-                            style: TextStyle(
-                                color: Colors.black,
-                                fontSize:
-                                    MediaQuery.of(context).size.height * .02,
-                                fontWeight: FontWeight.bold),
-                          ),
-                          /////////////////////////////////////////
-                        ],
+                        ),
                       ),
 
                       /////////////////////////////////////////////////////////
@@ -180,47 +264,42 @@ class Home extends StatelessWidget {
                   ),
                 ),
                 //////////////////////////////////////////////////////////////////////////////////
-                Padding(
-                  padding: const EdgeInsets.only(top: 15, bottom: 15),
-                  child: Container(
-                    height: MediaQuery.of(context).size.height * .05,
-                    width: double.infinity,
-                    decoration: BoxDecoration(
-                        color: Colors.white.withOpacity(.5),
-                        boxShadow: [
-                          BoxShadow(
-                            offset: Offset(20, -1),
-                            blurRadius: 20,
-                            color: Colors.blue,
-                          )
-                        ]),
-                    child: Center(
-                        child: Text(
-                      'New Offers : ',
-                      style: TextStyle(
-                          fontSize: MediaQuery.of(context).size.height * .04),
-                    )),
-                  ),
+
+                SizedBox(
+                  height: 50,
                 ),
-                //////////////////////////////////////////////////////////////////////////////////
-                /*
+
+                Column(
+                  children: [
+                    Text(
+                      'Recent Ledger',
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white60,
+                          fontSize: Get.height * .03),
+                    ),
+                    //////////////////////
+                    Padding(
+                      padding: const EdgeInsets.only(left: 100, right: 100),
+                      child: Divider(
+                        thickness: 4,
+                        color: Colors.white,
+                      ),
+                    )
+                  ],
+                ),
+                //////////////////////////////////////////////
+
+                SizedBox(
+                  height: 10,
+                ),
+
                 ListView.builder(
-                  itemCount: 3,
+                  itemCount: 2,
+                  shrinkWrap: true,
                   itemBuilder: (BuildContext context, int index) {
                     return transaction_container();
                   },
-                ),
-                */
-                //////////////////////////////////////////////
-                Expanded(
-                  flex: 3,
-                  child: ListView.builder(
-                    itemCount: 3,
-                    shrinkWrap: true,
-                    itemBuilder: (BuildContext context, int index) {
-                      return transaction_container();
-                    },
-                  ),
                 ),
               ],
             ),

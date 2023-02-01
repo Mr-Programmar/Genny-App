@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:genny_app/view/profile_screen.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 
-import '../Model/model_login.dart';
-import '../controller/controller_home.dart';
+import '../CUSTOM_WIDGETS/Custom_Colors.dart';
+import '../CUSTOM_WIDGETS/user_account_container.dart';
 import '../controller/controller_navigation.dart';
 import 'Home_Screen.dart';
 import 'Ledger_Screen.dart';
@@ -16,28 +14,16 @@ class bottom_Nav extends StatelessWidget {
   bottom_Nav({Key? key}) : super(key: key);
   NavController navigation_instance = Get.put(NavController());
 
-
-
-
-
-
   //------------------------------ALL_SCreens________________________________________________________________
   List<Widget> navigation_screens = [
     Home(),
     Offers_Page(),
     Items_Page(),
     All_Ledgers(),
-
     UserProfile(),
   ];
 
 //---------.............>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-
-
-
-
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -46,208 +32,298 @@ class bottom_Nav extends StatelessWidget {
             index: navigation_instance.default_index.value,
             children: navigation_screens,
           )),
-      bottomNavigationBar: Obx(() => BottomNavigationBar(
-              onTap: (index) {
-                navigation_instance.default_index.value = index;
-              },
-              currentIndex: navigation_instance.default_index.value,
-              selectedItemColor: Colors.red,
-              unselectedItemColor: Colors.cyan,
-              items: [
-                BottomNavigationBarItem(
-                  icon: Icon(Icons.home),
-                  label: "home",
-                ),
-                BottomNavigationBarItem(
-                  icon: Icon(Icons.local_offer),
-                  label: "offers",
-                ),
-                BottomNavigationBarItem(
-                  icon: Icon(Icons.list),
-                  label: "items",
-                ),
-                BottomNavigationBarItem(
-                  icon: Icon(Icons.report),
-                  label: "Ledger",
-                ),
-                BottomNavigationBarItem(
-                  icon: Icon(Icons.person),
-                  label: "profile",
-                )
-              ])),
+      bottomNavigationBar: Obx(() => Theme(
+            data: Theme.of(context).copyWith(
+              //   canvasColor: Custom_Colors.app_Background_Color,
+              canvasColor: Custom_Colors.app_Background_Color,
+            ),
+            child: BottomNavigationBar(
+                iconSize: Get.height * .03,
+                //fixedColor: Colors.black,
+
+                backgroundColor: Colors.black,
+                onTap: (index) {
+                  navigation_instance.default_index.value = index;
+                },
+                currentIndex: navigation_instance.default_index.value,
+                selectedItemColor: Custom_Colors.icon_button_Color,
+                unselectedItemColor: Custom_Colors.icon_button_Color,
+                items: [
+                  BottomNavigationBarItem(
+                    icon: Icon(
+                      Icons.home,
+                    ),
+                    label: "home",
+                  ),
+                  BottomNavigationBarItem(
+                    icon: Icon(Icons.local_offer),
+                    label: "offers",
+                  ),
+                  BottomNavigationBarItem(
+                    icon: Icon(Icons.list),
+                    label: "items",
+                  ),
+                  BottomNavigationBarItem(
+                    icon: Icon(Icons.report),
+                    label: "Ledger",
+                  ),
+                  BottomNavigationBarItem(
+                    icon: Icon(Icons.person),
+                    label: "profile",
+                  )
+                ]),
+          )),
       drawer: Drawer(
+        width: Get.width * .7,
+        backgroundColor: Custom_Colors.app_Background_Color,
+        elevation: .01,
         child: ListView(
           children: [
-            SizedBox(
-              child: UserAccountsDrawerHeader(
-                //   margin: EdgeInsets.only(bottom: 680),
-                currentAccountPicture: Image(
-                    image:
-                    AssetImage('assets/icons/BhaiNabeel-modified.png')),
-                accountName: Text(
-                  "hiiiiii",
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
-                    fontSize: Get.height * .02,
+            User_Account_Container(
+              container_height: Get.height * .2,
+              container_width: Get.width * .7,
+              top_right_corner_radius: 0,
+              top_left_corner_radius: 0,
+              bottom_right_corner_radius: 0,
+              bottom_left_corner_radius: 0,
+              border_width: 0,
+              border_color: Colors.transparent,
+            ),
+
+            ////////////////////////////////////////////////////////////////////////////////////
+            Padding(
+              padding: const EdgeInsets.only(bottom: 0),
+              child: Container(
+                decoration: BoxDecoration(
+                    color: Custom_Colors.app_Background_Color,
+                    border: Border(
+                      top: BorderSide(
+                        width: 2,
+                        color: Custom_Colors.icon_button_Color.withOpacity(.5),
+                      ),
+                      // bottom: BorderSide(
+                      //   width: 2,
+                      //   color: Custom_Colors.icon_button_Color.withOpacity(.5),
+                      // ),
+                    )),
+                child: ListTile(
+                  enabled: true,
+                  focusColor: Colors.blue.shade700,
+                  hoverColor: Colors.blue.shade700,
+                  leading: IconButton(
+                      onPressed: () {
+                        Get.to(bottom_Nav);
+                      },
+                      icon: Icon(
+                        Icons.home,
+                        color: Custom_Colors.icon_button_Color,
+                        size: Get.height * .03,
+                      )),
+                  title: Text(
+                    'Home',
+                    style: TextStyle(
+                        color: Colors.white60,
+                        fontWeight: FontWeight.bold,
+                        fontSize: Get.height * .02),
                   ),
                 ),
-                accountEmail: Text(
-                  'schohan123456@gmail.com',
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontWeight: FontWeight.bold,
-                    fontSize: Get.height * .02,
-                  ),
-                ),
               ),
             ),
-            //////////////////////////////////////////////////////////
-            ///
-            /////////////////////////////////////////////////////////////////////////////////////
-            ListTile(
-              focusColor: Colors.blue.shade700,
-              hoverColor: Colors.blue.shade700,
-              leading: Icon(
-                Icons.home,
-                color: Colors.black54,
-                size: Get.height * .04,
-              ),
-              title: Text(
-                'Home',
-                style: TextStyle(
-                    color: Colors.black,
-                    fontWeight: FontWeight.bold,
-                    fontSize: Get.height * .025),
-              ),
-            ),
-            Divider(
-              thickness: 1,
-              color: Colors.black,
-            ),
+
+/////////////////////////////////////////////////////////////////////////////////////
+            // Divider(
+            //   thickness: 1,
+            //   color: Custom_Colors.icon_button_Color,
+            // ),
             ////////////////////////////////////////////////////////////////
             /////////////////////////////////////////////////////////////////////////////////////
-            ListTile(
-              focusColor: Colors.blue.shade700,
-              hoverColor: Colors.blue.shade700,
-              leading: Icon(
-                Icons.local_offer,
-                color: Colors.black54,
-                size: Get.height * .04,
-              ),
-              title: Text(
-                'Offers',
-                style: TextStyle(
-                    color: Colors.black,
-                    fontWeight: FontWeight.bold,
-                    fontSize: Get.height * .025),
+            Padding(
+              padding: const EdgeInsets.only(bottom: 0),
+              child: Container(
+                decoration: BoxDecoration(
+                    color: Custom_Colors.app_Background_Color,
+                    border: Border(
+                        // bottom: BorderSide(
+                        //   width: 2,
+                        //   color: Custom_Colors.icon_button_Color.withOpacity(.5),
+                        // ),
+                        )),
+                child: ListTile(
+                  focusColor: Colors.blue.shade700,
+                  hoverColor: Colors.blue.shade700,
+                  leading: IconButton(
+                      onPressed: () {
+                        Get.to(bottom_Nav());
+                      },
+                      icon: Icon(
+                        Icons.local_offer,
+                        color: Custom_Colors.icon_button_Color,
+                        size: Get.height * .03,
+                      )),
+                  title: Text(
+                    'Offers',
+                    style: TextStyle(
+                        color: Colors.white60,
+                        fontWeight: FontWeight.bold,
+                        fontSize: Get.height * .02),
+                  ),
+                ),
               ),
             ),
-            Divider(
-              thickness: 1,
-              color: Colors.black,
-            ),
+            // Divider(
+            //   thickness: 1,
+            //   color: Custom_Colors.icon_button_Color,
+            // ),
             /////////////////////////////////////////////////////////////////////////////////////
-            ListTile(
-              focusColor: Colors.blue.shade700,
-              hoverColor: Colors.blue.shade700,
-              leading: Icon(
-                Icons.list,
-                color: Colors.black54,
-                size: Get.height * .04,
-              ),
-              title: Text(
-                'Items',
-                style: TextStyle(
-                    color: Colors.black,
-                    fontWeight: FontWeight.bold,
-                    fontSize: Get.height * .025),
+            Padding(
+              padding: const EdgeInsets.only(bottom: 0),
+              child: Container(
+                decoration: BoxDecoration(
+                  color: Custom_Colors.app_Background_Color,
+                ),
+                child: ListTile(
+                  focusColor: Colors.blue.shade700,
+                  hoverColor: Colors.blue.shade700,
+                  leading: IconButton(
+                      onPressed: () {
+                        Get.to(bottom_Nav());
+                      },
+                      icon: Icon(
+                        Icons.list,
+                        color: Custom_Colors.icon_button_Color,
+                        size: Get.height * .03,
+                      )),
+                  title: Text(
+                    'Items',
+                    style: TextStyle(
+                        color: Colors.white60,
+                        fontWeight: FontWeight.bold,
+                        fontSize: Get.height * .02),
+                  ),
+                ),
               ),
             ),
-            Divider(
-              thickness: 1,
-              color: Colors.black,
-            ),
+            // Divider(
+            //   thickness: 1,
+            //   color: Custom_Colors.icon_button_Color,
+            // ),
             /////////////////////////////////////////////////////////////////////////////////////
-            ListTile(
-              focusColor: Colors.blue.shade700,
-              hoverColor: Colors.blue.shade700,
-              leading: Icon(
-                Icons.report,
-                color: Colors.black54,
-                size: Get.height * .04,
-              ),
-              title: Text(
-                'Ledger',
-                style: TextStyle(
-                    color: Colors.black,
-                    fontWeight: FontWeight.bold,
-                    fontSize: Get.height * .025),
+            Padding(
+              padding: const EdgeInsets.only(bottom: 0),
+              child: Container(
+                decoration: BoxDecoration(
+                  color: Custom_Colors.app_Background_Color,
+                  // border: Border(
+                  //   bottom: BorderSide(
+                  //     width: 2,
+                  //     color: Custom_Colors.icon_button_Color.withOpacity(.5),
+                  //   ),
+                  // ),
+                ),
+                child: ListTile(
+                  focusColor: Colors.blue.shade700,
+                  hoverColor: Colors.blue.shade700,
+                  leading: IconButton(
+                      onPressed: () {
+                        Get.to(bottom_Nav());
+                      },
+                      icon: Icon(
+                        Icons.report,
+                        color: Custom_Colors.icon_button_Color,
+                        size: Get.height * .03,
+                      )),
+                  title: Text(
+                    'Ledger',
+                    style: TextStyle(
+                        color: Colors.white60,
+                        fontWeight: FontWeight.bold,
+                        fontSize: Get.height * .02),
+                  ),
+                ),
               ),
             ),
-            Divider(
-              thickness: 1,
-              color: Colors.black,
-            ),
+            // Divider(
+            //   thickness: 1,
+            //   color: Custom_Colors.icon_button_Color,
+            // ),
             /////////////////////////////////////////////////////////////////////////////////////
-            ListTile(
-              focusColor: Colors.blue.shade700,
-              hoverColor: Colors.blue.shade700,
-              leading: Icon(
-                Icons.person,
-                color: Colors.black54,
-                size: Get.height * .04,
-              ),
-              title: Text(
-                'Profile',
-                style: TextStyle(
-                    color: Colors.black,
-                    fontWeight: FontWeight.bold,
-                    fontSize: Get.height * .025),
+            Padding(
+              padding: const EdgeInsets.only(bottom: 0),
+              child: Container(
+                decoration: BoxDecoration(
+                  color: Custom_Colors.app_Background_Color,
+                  // border: Border(
+                  //   bottom: BorderSide(
+                  //     width: 2,
+                  //     color: Custom_Colors.icon_button_Color.withOpacity(.5),
+                  //   ),
+                  // ),
+                ),
+                child: ListTile(
+                  focusColor: Colors.blue.shade700,
+                  hoverColor: Colors.blue.shade700,
+                  leading: IconButton(
+                      onPressed: () {
+                        Get.to(bottom_Nav());
+                      },
+                      icon: Icon(
+                        Icons.person,
+                        color: Custom_Colors.icon_button_Color,
+                        size: Get.height * .03,
+                      )),
+                  title: Text(
+                    'Profile',
+                    style: TextStyle(
+                        color: Colors.white60,
+                        fontWeight: FontWeight.bold,
+                        fontSize: Get.height * .02),
+                  ),
+                ),
               ),
             ),
-            Divider(
-              thickness: 1,
-              color: Colors.black,
-            ),
+            // Divider(
+            //   thickness: 1,
+            //   color: Custom_Colors.icon_button_Color,
+            // ),
             ////////////////////////////////////////////////////////////////////////
           ],
         ),
-        backgroundColor: Colors.blue.shade50,
-        elevation: .01,
       ),
       appBar: AppBar(
         iconTheme: IconThemeData(
-            color: Colors.blue.shade900, size: Get.height * .04),
-        backgroundColor: Colors.white,
+            color: Custom_Colors.icon_button_Color, size: Get.height * .04),
+        backgroundColor: Custom_Colors.app_Background_Color,
         elevation: 0,
         actions: [
           Padding(
-            padding: const EdgeInsets.only(top: 8, bottom: 8, left: 8),
+            padding: const EdgeInsets.all(10),
             child: CircleAvatar(
-                backgroundColor: Color.fromARGB(255, 237, 235, 230),
+                backgroundColor: Colors.white30,
                 child: IconButton(
                     onPressed: () {},
                     icon: Icon(
                       Icons.notifications,
-                      color: Colors.black,
+                      color: Custom_Colors.icon_button_Color,
                     ))),
           ),
           ///////////////////////////////////////////////////////
           Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.all(10),
             child: CircleAvatar(
-                backgroundColor: Colors.amber,
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Image(
-                      image: const AssetImage('assets/icons/BhaiNabeel-modified.png')),
-                )),
+              backgroundColor: Custom_Colors.icon_button_Color,
+              child: Padding(
+                padding: const EdgeInsets.all(2),
+                child: ClipRRect(
+                    child: Image(
+                        fit: BoxFit.fill,
+                        image: const AssetImage(
+                            'assets/icons/BhaiNabeel-modified.png'))),
+              ),
+            ),
           ),
           ////////////////////////////////////////////////////////
         ],
       ),
-
     );
   }
 }
