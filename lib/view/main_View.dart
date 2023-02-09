@@ -7,6 +7,7 @@ import '../CUSTOM_WIDGETS/user_account_container.dart';
 import '../controller/controller_navigation.dart';
 import 'Home_Screen.dart';
 import 'Ledger_Screen.dart';
+import 'Login_Screen.dart';
 import 'items_Screen.dart';
 import 'offers_Screen.dart';
 
@@ -70,7 +71,8 @@ class bottom_Nav extends StatelessWidget {
                   BottomNavigationBarItem(
                     icon: Icon(Icons.person),
                     label: "profile",
-                  )
+                  ),
+
                 ]),
           )),
       drawer: Drawer(
@@ -281,6 +283,44 @@ class bottom_Nav extends StatelessWidget {
                 ),
               ),
             ),
+
+            Padding(
+              padding: const EdgeInsets.only(bottom: 0),
+              child: Container(
+                decoration: BoxDecoration(
+                  color: Custom_Colors.app_Background_Color,
+                  // border: Border(
+                  //   bottom: BorderSide(
+                  //     width: 2,
+                  //     color: Custom_Colors.icon_button_Color.withOpacity(.5),
+                  //   ),
+                  // ),
+                ),
+                child: ListTile(
+                  onTap: (){ Get.to(Login()); },
+                  focusColor: Colors.blue.shade700,
+                  hoverColor: Colors.blue.shade700,
+                  leading: IconButton(
+                      onPressed: () {
+
+                      },
+                      icon: Icon(
+                        Icons.login_outlined
+                        ,
+                        color: Custom_Colors.icon_button_Color,
+                        size: Get.height * .03,
+                      )),
+                  title: Text(
+                    'Log Out',
+                    style: TextStyle(
+                        color: Colors.white60,
+                        fontWeight: FontWeight.bold,
+                        fontSize: Get.height * .02),
+                  ),
+                ),
+              ),
+            ),
+
             // Divider(
             //   thickness: 1,
             //   color: Custom_Colors.icon_button_Color,
@@ -309,15 +349,31 @@ class bottom_Nav extends StatelessWidget {
           ///////////////////////////////////////////////////////
           Padding(
             padding: const EdgeInsets.all(10),
-            child: CircleAvatar(
-              backgroundColor: Custom_Colors.icon_button_Color,
-              child: Padding(
-                padding: const EdgeInsets.all(2),
-                child: ClipRRect(
-                    child: Image(
-                        fit: BoxFit.fill,
-                        image: const AssetImage(
-                            'assets/icons/BhaiNabeel-modified.png'))),
+            child: GestureDetector(
+              onTap: (){
+                Container(
+                  height: Get.height*.1,
+                  width: Get.width*.2,
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                  ),
+                  child: TextButton(onPressed: (){
+
+                  },child: Text('Logout',style: TextStyle(color: Colors.red),),)
+                );
+
+              }
+              ,
+              child: CircleAvatar(
+                backgroundColor: Custom_Colors.icon_button_Color,
+                child: Padding(
+                  padding: const EdgeInsets.all(2),
+                  child: ClipRRect(
+                      child: Image(
+                          fit: BoxFit.fill,
+                          image: const AssetImage(
+                              'assets/icons/BhaiNabeel-modified.png'))),
+                ),
               ),
             ),
           ),

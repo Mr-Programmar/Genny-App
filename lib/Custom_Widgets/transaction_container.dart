@@ -9,7 +9,7 @@ class transaction_container extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(bottom: 5),
       child: Container(
-        height: MediaQuery.of(context).size.height * .087,
+        height: MediaQuery.of(context).size.height * .097,
         width: double.infinity,
         decoration: BoxDecoration(
             border:

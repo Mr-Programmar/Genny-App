@@ -277,7 +277,7 @@ class _HomeState extends State<Home> {
                 //////////////////////////////////////////////////////////////////////////////////
 
                 SizedBox(
-                  height: 50,
+                  height: 10,
                 ),
 
                 Column(
@@ -305,12 +305,15 @@ class _HomeState extends State<Home> {
                   height: 10,
                 ),
 
-                ListView.builder(
-                  itemCount: 2,
-                  shrinkWrap: true,
-                  itemBuilder: (BuildContext context, int index) {
-                    return transaction_container();
-                  },
+                Expanded(
+                  child: ListView.builder(
+                    
+                    itemCount: 3,
+                    shrinkWrap: true,
+                    itemBuilder: (BuildContext context, int index) {
+                      return transaction_container();
+                    },
+                  ),
                 ),
               ],
             ),

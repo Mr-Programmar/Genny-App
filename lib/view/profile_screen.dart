@@ -5,6 +5,8 @@ import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 
 import '../CUSTOM_WIDGETS/Custom_Colors.dart';
+import '../controller/controller_ProfileUpdate.dart';
+import '../controller/controller_login.dart';
 
 class UserProfile extends StatefulWidget {
   const UserProfile({Key? key}) : super(key: key);
@@ -14,6 +16,11 @@ class UserProfile extends StatefulWidget {
 }
 
 class _UserProfileState extends State<UserProfile> {
+  ProfileUpdate _profileController = Get.put(ProfileUpdate());
+  loginController _controller = Get.put(loginController());
+  TextEditingController newPassword = TextEditingController();
+  TextEditingController newPhone = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -32,7 +39,7 @@ class _UserProfileState extends State<UserProfile> {
                   SizedBox(height: Get.height * .05),
                   /////////////////////////////////////  Profile Container ///////////////////////////////////////////////////////////////////
                   User_Account_Container(
-                      container_height: Get.height * .2,
+                      container_height: Get.height * .22,
                       container_width: Get.width * .75,
                       top_left_corner_radius: 30,
                       top_right_corner_radius: 30,
@@ -66,8 +73,44 @@ class _UserProfileState extends State<UserProfile> {
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
+
+///////////////////////////////////////////////////////////////////////////name
+                            TextFormField(
+                              enabled: false,
+                              style: TextStyle(
+                                fontStyle: FontStyle.italic,
+                                fontSize: Get.height * .02,
+                                color: Colors.white54,
+                                fontWeight: FontWeight.bold,
+                              ),
+                              decoration: InputDecoration(
+                                enabledBorder: UnderlineInputBorder(
+                                    borderSide: BorderSide(
+                                      color: Custom_Colors.icon_button_Color,
+                                    )),
+                                label: Text(
+                                  _controller.loginmodel_instance.value.name
+                                      .toString(),
+                                  style: TextStyle(
+                                    fontStyle: FontStyle.italic,
+                                    fontSize: Get.height * .02,
+                                    // color: Colors.white54,
+                                    color: Custom_Colors.icon_button_Color,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                                hintText: "ASAD WASEEM ",
+                                hintStyle: TextStyle(
+                                  fontStyle: FontStyle.italic,
+                                  fontSize: Get.height * .02,
+                                  color: Colors.white38,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ),
                             ////////////  email ///////////////
                             TextFormField(
+                              enabled: false,
                               style: TextStyle(
                                 fontStyle: FontStyle.italic,
                                 fontSize: Get.height * .02,
@@ -82,7 +125,9 @@ class _UserProfileState extends State<UserProfile> {
                                   color: Custom_Colors.icon_button_Color,
                                 )),
                                 label: Text(
-                                  "Email",
+                                  _controller
+                                      .loginmodel_instance.value.emailsave
+                                      .toString(),
                                   style: TextStyle(
                                     fontStyle: FontStyle.italic,
                                     fontSize: Get.height * .02,
@@ -102,6 +147,7 @@ class _UserProfileState extends State<UserProfile> {
                             ),
                             /////////  Phone   ///////////
                             TextFormField(
+                              controller: newPhone,
                               style: TextStyle(
                                 fontStyle: FontStyle.italic,
                                 fontSize: Get.height * .02,
@@ -116,7 +162,7 @@ class _UserProfileState extends State<UserProfile> {
                                   color: Custom_Colors.icon_button_Color,
                                 )),
                                 label: Text(
-                                  "Phone",
+                                  "New Phone",
                                   style: TextStyle(
                                     fontStyle: FontStyle.italic,
                                     fontSize: Get.height * .02,
@@ -135,41 +181,11 @@ class _UserProfileState extends State<UserProfile> {
                               ),
                             ),
 
-                            /////////  Address   ///////////
-                            TextFormField(
-                              style: TextStyle(
-                                fontStyle: FontStyle.italic,
-                                fontSize: Get.height * .02,
-                                color: Colors.white54,
-                                fontWeight: FontWeight.bold,
-                              ),
-                              decoration: InputDecoration(
-                                enabledBorder: UnderlineInputBorder(
-                                    borderSide: BorderSide(
-                                  color: Custom_Colors.icon_button_Color,
-                                )),
-                                label: Text(
-                                  "Address",
-                                  style: TextStyle(
-                                    fontStyle: FontStyle.italic,
-                                    fontSize: Get.height * .02,
-                                    // color: Colors.white54,
-                                    color: Custom_Colors.icon_button_Color,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                                hintText: "House abc, xyz town, Lahore ",
-                                hintStyle: TextStyle(
-                                  fontStyle: FontStyle.italic,
-                                  fontSize: Get.height * .02,
-                                  color: Colors.white38,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ),
+
 
                             /////////  Password   ///////////
                             TextFormField(
+                              controller: newPassword,
                               style: TextStyle(
                                 fontStyle: FontStyle.italic,
                                 fontSize: Get.height * .02,
@@ -182,7 +198,7 @@ class _UserProfileState extends State<UserProfile> {
                                   color: Custom_Colors.icon_button_Color,
                                 )),
                                 label: Text(
-                                  "Password",
+                                  "New Password",
                                   style: TextStyle(
                                     fontStyle: FontStyle.italic,
                                     fontSize: Get.height * .02,
@@ -208,7 +224,11 @@ class _UserProfileState extends State<UserProfile> {
                   SizedBox(height: Get.height * .05),
                   /////////////////////////////////////
                   GestureDetector(
-                    onTap: () {},
+                    onTap: () {
+                      _profileController.profileupdate(newPassword.text, newPhone.text);
+
+
+                    },
                     child: Container(
                       height: Get.height * .05,
                       width: Get.width * .6,
