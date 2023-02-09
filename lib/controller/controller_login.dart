@@ -1,52 +1,78 @@
 import 'dart:convert';
 
+import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
 import '../Model/model_login.dart';
+import '../view/Login_Screen.dart';
 import '../view/main_View.dart';
 import 'package:http/http.dart' as http;
 
- class loginController extends GetxController {
+class loginController extends GetxController {
+
+  var alldata;
+
+
+     late  final   loginmodel_instance=LoginModel(
+         name: alldata["User"]["name"].toString(),
+         emailsave: alldata["User"]["email"].toString(),
+         profile_image: alldata["User"]["image"].toString(),
+         userid: alldata["User"]["id"].toString()).obs;
+
+      login(email, password) async {
+       try {
+         var url = Uri.parse('https://newgenny.eavenir.com/api/login');
+         final responce = await http.post(
+           url,
+           headers: {
+             'Content-Type': 'application/json',
+           },
+           body: jsonEncode({
+             'email': email,
+             'password': password,
+           }),
+         );
+
+         alldata = jsonDecode(responce.body);
+
+
+         print(alldata);
+         // print(alldata["User"]["name"]);
+         print(alldata["status"]);
+
+
+         loginmodel_instance(LoginModel(
+    name: alldata["User"]["name"].toString(),
+    emailsave: alldata["User"]["email"].toString(),
+    profile_image: alldata["User"]["image"].toString(),
+    userid: alldata["User"]["id"].toString()));
 
 
 
-    static late LoginModel loginmodel_instance;
 
 
 
-     static login(email, password) async {
-    try {
-      var url = Uri.parse('https://newgenny.eavenir.com/api/login');
-      final responce = await http.post(
-        url,
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: jsonEncode({
-          'email': email,
-          'password': password,
-        }),
-      );
 
 
 
-      print(responce.statusCode);
-       var alldata = jsonDecode(responce.body);
-
-        loginmodel_instance = LoginModel(name: alldata["User"]["name"],emailsave: alldata["User"]["email"], profile_image: alldata["User"]["image"], userid: alldata["User"]["id"] );
-
-      if (alldata["status"] == "exist") {
 
 
 
-        print("User Login Successfully");
+         print("_________________________________________________________________________________________________________________---${loginmodel_instance.value.name}");
 
-        Get.to(bottom_Nav());
-      }
-    } catch (e) {
-      print("Catch e: $e");
-    }
-  }
+         if (alldata["status"] == "exist") {
+           // print("status a rha ha");
+           // print(alldata["status"]);
 
+           Get.to(bottom_Nav());
+
+
+
+
+         }
+       } catch (e) {
+         print("Catch e: $e");
+       }
+     }
 
 }

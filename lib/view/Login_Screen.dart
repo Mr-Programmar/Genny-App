@@ -7,17 +7,14 @@ import '../CUSTOM_WIDGETS/Custom_Colors.dart';
 import '../controller/controller_login.dart';
 import 'main_View.dart';
 
-class Login extends StatefulWidget {
-  const Login({Key? key}) : super(key: key);
-
-  @override
-  State<Login> createState() => _LoginState();
-}
-
-class _LoginState extends State<Login> {
+class Login extends StatelessWidget {
+   Login({Key? key,}) : super(key: key);
 
   TextEditingController _email=TextEditingController();
+
   TextEditingController _pass=TextEditingController();
+
+  loginController _controller= Get.put(loginController());
 
   @override
   Widget build(BuildContext context) {
@@ -116,7 +113,9 @@ class _LoginState extends State<Login> {
                       //////////////////////////  Update Button //////////////////////////////////////////////////////////////////////
                       GestureDetector(
                         onTap: () {
-                          loginController.login(_email.text, _pass.text);
+                           _controller.login(_email.text, _pass.text);
+
+
 
                         },
                         child: Container(

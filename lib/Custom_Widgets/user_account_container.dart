@@ -6,6 +6,8 @@ import '../controller/controller_login.dart';
 
 class User_Account_Container extends StatelessWidget {
 
+  loginController _controller= Get.put(loginController());
+
   final double container_height;
   final double container_width;
   final double top_left_corner_radius;
@@ -46,35 +48,40 @@ class User_Account_Container extends StatelessWidget {
         children: [
           Padding(
             padding: const EdgeInsets.all(8.0),
-            child: Image(
+            child:  Image(
                 height: Get.height * .09,
                 image: NetworkImage(
-                    "https://newgenny.eavenir.com/${loginController.loginmodel_instance.profile_image}" ,
+                  "https://newgenny.eavenir.com/${_controller.loginmodel_instance.value.profile_image.toString()}"),
+
+
+
                 )),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Text(
-              loginController.loginmodel_instance.name,
-              style: TextStyle(
-                color: Colors.white,
-                fontWeight: FontWeight.bold,
-                fontSize: Get.height * .02,
-              ),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(left: 10),
-            child: Text(
-              loginController.loginmodel_instance.emailsave,
-              style: TextStyle(
-                //  color: Custom_Colors.icon_button_Color,
-                color: Colors.white,
-                fontWeight: FontWeight.bold,
-                fontSize: Get.height * .02,
-              ),
-            ),
-          ),
+
+    Padding(
+    padding: const EdgeInsets.all(8.0),
+    child: Text(
+      _controller.loginmodel_instance.value.name.toString(),
+
+    style: TextStyle(
+    color: Colors.white,
+    fontWeight: FontWeight.bold),)),
+
+
+    Padding(
+    padding: const EdgeInsets.all(8.0),
+
+    child: Text(
+        _controller.loginmodel_instance.value.emailsave.toString(),
+
+    style: TextStyle(
+    //  color: Custom_Colors.icon_button_Color,
+    color: Colors.white,
+    fontWeight: FontWeight.bold,
+    fontSize: Get.height * .02,
+    ))),
+
+
+
         ],
       ),
     ); //// );

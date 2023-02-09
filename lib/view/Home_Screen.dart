@@ -19,6 +19,9 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  loginController _controller= Get.put(loginController());
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -46,13 +49,13 @@ class _HomeState extends State<Home> {
                 ),
                 //////////////////////////////////////////////////////////////
                 ///////////////////////////////////////////////////////////////////////
-                Text(
-                  loginController.loginmodel_instance.name,
+                Obx(() => Text(
+                  _controller.loginmodel_instance.value.name.toString(),
                   style: TextStyle(
                       color: Colors.white,
                       fontSize: MediaQuery.of(context).size.height * .04,
                       fontWeight: FontWeight.bold),
-                ),
+                ),),
                 //////////////////////////////////////////////////////////////
 
                 SizedBox(
