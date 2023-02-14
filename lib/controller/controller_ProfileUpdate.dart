@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 
@@ -35,15 +36,26 @@ class ProfileUpdate extends GetxController{
       reply = jsonDecode(responce.body);
 
 
-      print("===========================================================================${reply}");
+      // print("-----------------------------------------------------------${reply}");
       // print(alldata["User"]["name"]);
 
 
 
 
-      if (reply == "ok") {
-        // print("status a rha ha");
-        print("done" );
+      if (reply == "changed") {
+
+        Get.snackbar(
+
+          duration: Duration(seconds: 3),
+           "Updated",
+          "changed",
+
+
+        );
+
+        print("password changed" );
+
+
 
 
 
@@ -51,6 +63,20 @@ class ProfileUpdate extends GetxController{
 
 
       }
+      if (reply == "notchanged") {
+
+        print("not changed");
+        Get.snackbar(
+          "Sorry",
+          "not changed",
+        );
+
+
+
+      }
+
+
+
     } catch (e) {
       print("Catch e: $e");
     }

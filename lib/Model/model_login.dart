@@ -11,7 +11,7 @@
   String remember_token="";
 
 
-  LoginModel({required this.name, required this.emailsave, required this.profile_image, required this.userid, required this.cell, required this.remember_token });
+  LoginModel({required this.name, required this.emailsave, required this.profile_image, required this.userid, required this.cell, required this.remember_token, required this.status });
 
 
 

@@ -7,6 +7,7 @@ import 'package:lottie/lottie.dart';
 import '../CUSTOM_WIDGETS/Custom_Colors.dart';
 import '../controller/controller_items.dart';
 import '../controller/controller_login.dart';
+import '../controller/controller_offers.dart';
 import 'main_View.dart';
 
 class Login extends StatefulWidget {
@@ -24,10 +25,11 @@ class _LoginState extends State<Login> {
 
   TextEditingController _pass=TextEditingController();
 
+
   loginController _controller= Get.put(loginController());
 
    ItemController _controllerItems= Get.put(ItemController());
-
+  OffersController _controllerOffers= Get.put(OffersController());
 
 
 
@@ -143,13 +145,25 @@ class _LoginState extends State<Login> {
                             _controller.loading.value=false;
 
 
+
                             await _controller.login(_email.text, _pass.text);
+
+
 
                             _controller.loading.value=true;
 
 
 
-                            _controllerItems.getItemFromApi();
+
+                          await  _controllerItems.getItemFromApi();
+                           await _controllerOffers.getOffersFromApi();
+
+
+
+
+
+
+
 
 
 

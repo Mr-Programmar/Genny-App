@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../Model/model_login.dart';
@@ -15,6 +16,7 @@ class loginController extends GetxController {
   var passwordSave;
 
   late final loginmodel_instance = LoginModel(
+      status: alldata["User"]["status"].toString(),
           cell: alldata["User"]["cell"].toString(),
           remember_token: alldata["User"]["remember_token"].toString(),
           name: alldata["User"]["name"].toString(),
@@ -38,9 +40,9 @@ class loginController extends GetxController {
         }),
       );
 
-      alldata = jsonDecode(responce.body);
+       alldata = await  jsonDecode(responce.body);
 
-      print(alldata);
+      // print(alldata);
       // print(alldata["User"]["name"]);
       print(alldata["status"]);
 
@@ -50,7 +52,16 @@ class loginController extends GetxController {
           name: alldata["User"]["name"].toString(),
           emailsave: alldata["User"]["email"].toString(),
           profile_image: alldata["User"]["image"].toString(),
-          userid: alldata["User"]["id"].toString()));
+          userid: alldata["User"]["id"].toString(),
+          status: alldata["User"]["status"].toString()
+
+
+
+      )
+
+
+
+      );
 
       print(
           "_________________________________________________________________________________________________________________---${loginmodel_instance.value.name}");
@@ -61,6 +72,12 @@ class loginController extends GetxController {
 
         Get.to(bottom_Nav());
       }
+
+
+
+
+
+
     } catch (e) {
       print("Catch e: $e");
     }
